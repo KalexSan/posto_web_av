@@ -8,13 +8,12 @@ public interface PacienteDAO {
 
     public void inserir(Paciente p);
 
-	public void atualizar(String id, Paciente p);
+	public void atualizar(Long id, Paciente p);
 
-	public void remover(String id);
+	public void remover(Long id);
 
 	public List<Paciente> listarTodos();
 	
-	public Paciente procurar(String id);
-
+	public Paciente procurar(Long id);
 	
 }

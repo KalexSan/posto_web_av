@@ -7,6 +7,15 @@ public class Endereco {
 	private String cep;
 	private Bairro bairro;
 
+	public Endereco(Long id, String logradouro, String numero, String cep, Bairro bairro) {
+		super();
+		this.id = id;
+		this.logradouro = logradouro;
+		this.numero = numero;
+		this.cep = cep;
+		this.bairro = bairro;
+	}
+
 	public Long getId() {
 		return id;
 	}

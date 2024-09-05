@@ -8,7 +8,8 @@ public class Consulta {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private String data_hora;
     private String idSituacao;
-    
+    private Medico medico;
+
     public Consulta() {
         
     }
@@ -42,6 +43,14 @@ public class Consulta {
 
     public void setIdSituacao(String idSituacao) {
         this.idSituacao = idSituacao;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
     }
 
 }

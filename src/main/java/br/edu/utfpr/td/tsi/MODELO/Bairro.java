@@ -4,9 +4,6 @@ public class Bairro {
     private Long id;
 	private String nome;
 	
-	public Bairro() {
-		
-	}
 		
 	public Bairro(Long id, String nome) {
 		super();

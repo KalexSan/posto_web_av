@@ -40,7 +40,7 @@ public class MysqlPacienteDao implements PacienteDAO {
     }
 
     @Override
-    public void atualizar(String id, Paciente paciente) {
+    public void atualizar(Long id, Paciente paciente) {
         String sql = "UPDATE paciente SET nome = ?, sobrenome = ?, data_Nascimento = ? WHERE idPaciente = ?";
         try {
             Connection conn = dataSource.getConnection();
@@ -49,7 +49,7 @@ public class MysqlPacienteDao implements PacienteDAO {
             preparedStatement.setString(1, paciente.getNome());
             preparedStatement.setString(2, paciente.getSobrenome());
             preparedStatement.setDate(3, java.sql.Date.valueOf(paciente.getDataNascimento()));
-            preparedStatement.setString(4, id);
+            preparedStatement.setLong(4, id);
             preparedStatement.executeUpdate();
 
             conn.close();
@@ -60,13 +60,13 @@ public class MysqlPacienteDao implements PacienteDAO {
     }
 
     @Override
-    public void remover(String id) {
+    public void remover(Long id) {
         String sql = "DELETE FROM paciente WHERE idPaciente = ?";
         try {
             Connection conn = dataSource.getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
-            preparedStatement.setString(1, id);
+            preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
 
             conn.close();
@@ -84,7 +84,7 @@ public class MysqlPacienteDao implements PacienteDAO {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery( "SELECT idPaciente, nome, sobrenome, data_Nascimento FROM paciente");
             while (result.next()) {
-                String id = result.getString(1);
+                Long id = result.getLong(1);
                 String nome = result.getString(2);
                 String sobrenome = result.getString(3);
                 java.sql.Date dataNascimento = result.getDate(4);
@@ -99,12 +99,12 @@ public class MysqlPacienteDao implements PacienteDAO {
     }
 
     @Override
-    public Paciente procurar(String id) {
-        String sql = "SELECT idPaciente, nome, sobrenome, data_Nascimento FROM paciente WHERE idPaciente = ?";
+    public Paciente procurar(Long id) {
+        String sql = "SELECT * FROM paciente WHERE idPaciente = ?";
         try {
             Connection conn = dataSource.getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, id);
+            preparedStatement.setLong(1, id);
             ResultSet result = preparedStatement.executeQuery();
             if (result.next()) {
                 String nome = result.getString(2);

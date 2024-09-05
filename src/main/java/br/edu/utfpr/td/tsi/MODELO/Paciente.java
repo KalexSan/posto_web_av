@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Paciente {
-    private String id;
+    private Long id;
 	private String nome;
 	private String sobrenome;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -13,11 +13,7 @@ public class Paciente {
 	private Endereco endereco;
 	private Consulta consulta;
 
-
-	public Paciente() {
-	}
-
-	public Paciente(String id, String nome, String sobrenome, LocalDate dataNascimento) {
+	public Paciente(Long id, String nome, String sobrenome, LocalDate dataNascimento) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -25,11 +21,11 @@ public class Paciente {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

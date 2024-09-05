@@ -12,13 +12,19 @@ import br.edu.utfpr.td.tsi.DAO.EnderecoDAO;
 import br.edu.utfpr.td.tsi.DAO.PacienteDAO;
 import br.edu.utfpr.td.tsi.MODELO.Endereco;
 import br.edu.utfpr.td.tsi.MODELO.Paciente;
+import br.edu.utfpr.td.tsi.Service.PacienteService;
 
 @Controller
 public class PacienteController {
     
     @Autowired
     PacienteDAO pacienteDAO;
+    
+    @Autowired
     EnderecoDAO enderecoDAO;
+
+    @Autowired
+    PacienteService pacienteService;
 
     @GetMapping("/listarPacientes")
     public String listar( Model model) {
@@ -36,7 +42,7 @@ public class PacienteController {
     @PostMapping("/cadastrarPaciente")
     public String cadastrar(Paciente paciente, Endereco endereco) {
         pacienteDAO.inserir(paciente);
-        enderecoDAO.inserir(endereco, paciente.getId());
+        enderecoDAO.inserir(endereco);
         return "redirect:/listarPacientes";
     }
 }

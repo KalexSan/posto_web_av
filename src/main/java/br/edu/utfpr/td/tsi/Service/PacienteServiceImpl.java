@@ -14,11 +14,11 @@ public class PacienteServiceImpl implements PacienteService {
     private DataSource dataSource;
 
     @Override
-    public boolean podeAgendarConsulta(Long idPaciente) {
+    public boolean podeAgendarConsulta(String idPaciente) {
         String sql = "SELECT COUNT(*) FROM consulta WHERE idPaciente = ?";
        try (Connection conn = dataSource.getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-            preparedStatement.setLong(1, idPaciente);
+            preparedStatement.setString(1, idPaciente);
             try (ResultSet rs = preparedStatement.executeQuery()) {
                 if (rs.next()) {
                     int count = rs.getInt(1);
