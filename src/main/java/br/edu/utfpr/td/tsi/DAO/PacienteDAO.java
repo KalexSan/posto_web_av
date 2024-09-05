@@ -6,7 +6,7 @@ import br.edu.utfpr.td.tsi.MODELO.Paciente;
 
 public interface PacienteDAO {
 
-    public void inserir(Paciente p);
+	public void inserir(Paciente p);
 
 	public void atualizar(Long id, Paciente p);
 
