@@ -15,7 +15,7 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     public boolean podeAgendarConsulta(String idPaciente) {
-        String sql = "SELECT COUNT(*) FROM consulta WHERE idPaciente = ?";
+        String sql = "SELECT COUNT(*) FROM consulta WHERE idPaciente = ? and idsituacao = 'agendado'";
        try (Connection conn = dataSource.getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.setString(1, idPaciente);
