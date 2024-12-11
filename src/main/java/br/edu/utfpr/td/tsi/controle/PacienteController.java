@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import br.edu.utfpr.td.tsi.DAO.EnderecoDAO;
 import br.edu.utfpr.td.tsi.DAO.PacienteDAO;
-import br.edu.utfpr.td.tsi.MODELO.Endereco;
 import br.edu.utfpr.td.tsi.MODELO.Paciente;
 import br.edu.utfpr.td.tsi.Service.PacienteService;
 
@@ -40,9 +39,11 @@ public class PacienteController {
     }
 
     @PostMapping("/cadastrarPaciente")
-    public String cadastrar(Paciente paciente, Endereco endereco) {
+    public String cadastrar(Paciente paciente) {
         pacienteDAO.inserir(paciente);
-        enderecoDAO.inserir(endereco);
         return "redirect:/listarPacientes";
     }
+
+    
+
 }
